@@ -1,25 +1,42 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import ItemList from './components/Items/ItemList';
+import BasketItem from './components/Basket/BasketItem';
+import Nav from './components/Nav/Nav';
+import LoginComponent from './components/Login/LoginComponent';
+import styled from 'styled-components';
 
-function App() {
+
+const App = () => {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <StyledDiv>
+      <Nav />
+      <div  >
+        <Switch>
+          <Route path='/' exact>
+            <ItemList />
+          </Route>
+          <Route path='/basket'>
+            <BasketItem />
+          </Route>
+          <Route path='/login'>
+            <LoginComponent />
+          </Route>
+        </Switch>
+      </div>
+    </StyledDiv>
+
+  )
+};
+const StyledDiv = styled.div`
+  div{
+    float: left;
+  }
+
+`;
+
 
 export default App;
